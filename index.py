@@ -33,7 +33,10 @@ def insert_data_if_new(data):
         table = dynamodb.Table(table_name)
 
         id = data['id']
-        table.put_item(
+        response = table.get_item(Key={'id': id})
+
+        if 'Item' not in response:
+            response = table.put_item(
                 Item={
                     'id': data['id'],
                     'name_last_name': data['name_last_name'],
@@ -42,6 +45,10 @@ def insert_data_if_new(data):
                     "real_estate_type": data["real_estate_type"]
                 }
             )
+            print("New record inserted into DynamoDB.")
+        else:
+            print("Data already exists in DynamoDB. Not inserting.")
+
     except Exception as e:
         print("Error:", str(e))
 
