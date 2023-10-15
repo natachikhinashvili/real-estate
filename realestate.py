@@ -1,9 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-
-def get_data(url, headers):    
-    id = 1
+def get_data(url, headers, id):
     try:
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
@@ -34,7 +32,6 @@ def get_data(url, headers):
                         "price": price,
                         "real_estate_type": match
                     }
-                    id += 1
                     return data
     except Exception as e:
         print("An error occurred:", str(e))
