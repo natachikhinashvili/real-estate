@@ -1,12 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
-import psycopg2
-from datetime import datetime
-import boto3
 
 
 def get_data(url, headers):    
-    print(url, headers)
+    id = 1
     try:
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
@@ -31,11 +28,13 @@ def get_data(url, headers):
                                 match = estate
 
                     data = {
+                        "id": id,
                         "name_last_name": name,
                         "post_date": date,
                         "price": price,
                         "real_estate_type": match
                     }
+                    id += 1
                     return data
     except Exception as e:
         print("An error occurred:", str(e))
