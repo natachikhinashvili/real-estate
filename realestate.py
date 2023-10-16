@@ -17,6 +17,7 @@ def get_data(url, headers, id):
                     date = date.find("span").get_text()
                     price = detailpage.find("div", class_="price-box")
                     price = price.find("span").get_text().strip()
+                    address = detailpage.find("span", class_="address").get_text().strip()
                     estatetype = detailpage.find("h1", class_="mb-0").get_text().lower().split(' ')
                     words_to_search = ["apartment", "house", "land", "hotel"]
                     match = ""
@@ -30,7 +31,8 @@ def get_data(url, headers, id):
                         "name_last_name": name,
                         "post_date": date,
                         "price": price,
-                        "real_estate_type": match
+                        "real_estate_type": match,
+                        "address": address
                     }
                     return data
     except Exception as e:

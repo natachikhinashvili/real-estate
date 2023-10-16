@@ -1,3 +1,1 @@
 # real-estate
-
-## Linux cron

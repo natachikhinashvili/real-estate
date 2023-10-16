@@ -17,7 +17,8 @@ def insert_data(data):
                     "name_last_name": data["name_last_name"],
                     "post_date": data["post_date"],
                     "price": data["price"],
-                    "real_estate_type": data["real_estate_type"]
+                    "real_estate_type": data["real_estate_type"],
+                    "address": data["address"]
                 }
             )
             print("New record inserted into DynamoDB.")
