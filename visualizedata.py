@@ -14,11 +14,12 @@ property_data = response['Items']
 
 addresses = [item['address'] for item in property_data]
 
+m = folium.Map(location=[41.7151, 44.8271], zoom_start=12)
+
 for address in addresses:
     url = f'https://maps.googleapis.com/maps/api/geocode/json?address={address}&key={"AIzaSyBI5ZsMHPmb2o1SESN22PJi_Dqaba6CeYY"}'
     response = requests.get(url)
     data = response.json()
-    print(data)
     
     if data['status'] == 'OK':
         location = data['results'][0]['geometry']['location']
@@ -26,8 +27,6 @@ for address in addresses:
         longitude = location['lng']
     else:
         print(f'Geocoding failed. Status: {data["status"]}')
-    
-    m = folium.Map(location=[latitude, longitude], zoom_start=12)
     
     folium.Marker(
         location=[latitude, longitude],
