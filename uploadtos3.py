@@ -7,5 +7,3 @@ def uploadtos3():
     filename = "data.txt"
 
     s3.upload_file("data.txt", bucket, filename)
-
-    print("uploaded")
