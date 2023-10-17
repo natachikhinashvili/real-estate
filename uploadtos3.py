@@ -7,5 +7,5 @@ def uploadtos3():
     filename = "data.txt"
     mapfilename = "index.html"
 
-    s3.upload_file("data.txt", bucket, filename)
+    s3.upload_file("data.txt", bucket, filename, ExtraArgs={'ContentType': 'text/plain'})
     s3.upload_file("map.html", bucket, mapfilename,  ExtraArgs={'ContentType': 'text/html'}) 
