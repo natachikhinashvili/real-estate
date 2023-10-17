@@ -8,3 +8,9 @@ http://realestatedata123.s3-website-us-east-1.amazonaws.com/data.txt
 
 ## map link
 http://realestatedata123.s3-website-us-east-1.amazonaws.com/index.html
+
+## tools used
+- AWS dynamodb
+- AWS s3
+- python
+- folium - data visualization
