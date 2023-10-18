@@ -14,3 +14,5 @@ http://realestatedata123.s3-website-us-east-1.amazonaws.com/map.html
 - AWS s3
 - python
 - folium - data visualization
+
+## cron is scheduled to execute the specified command at midnight (00:00) every day, regardless of the day of the week or month.
