@@ -1,4 +1,6 @@
 import boto3
+from boto3.dynamodb.conditions import Attr
+
 
 def insert_data(data):
     dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
@@ -6,9 +8,9 @@ def insert_data(data):
 
     try:
         table = dynamodb.Table(table_name)
-        response = table.get_item(Key={'id': data['id']})
+        response = table.scan(FilterExpression=Attr("address").eq(data["address"]))
 
-        if 'Item' not in response:
+        if response['Count'] == 0:
             try:
                 table.put_item(
                     Item={
